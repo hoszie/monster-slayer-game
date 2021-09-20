@@ -12,26 +12,6 @@ const app = Vue.createApp({
       logMessages: []
     };
   },
-  watch: {
-    playerHealth(value) {
-      if (value <= 0 && this.monsterHealth <= 0) {
-        //A draw
-        this.winner =  'draw'
-      } else if (value <= 0) {
-        //player lost
-        this.winner = 'monster'
-      }
-    },
-    monsterHealth(value) {
-      if (value <= 0 && this.playerHealth <= 0) {
-        //a draw
-        this.winner =  'draw'
-      } else if (value <= 0) {
-        //monster lost
-        this.winner = 'player'
-      }
-    }
-  },
   computed: {
     monsterBarStyles() {
       if (this.monsterHealth < 0) {
@@ -97,6 +77,26 @@ const app = Vue.createApp({
         actionType: what,
         actionValue: value
       });
+    }
+  },
+  watch: {
+    playerHealth(value) {
+      if (value <= 0 && this.monsterHealth <= 0) {
+        //A draw
+        this.winner =  'draw'
+      } else if (value <= 0) {
+        //player lost
+        this.winner = 'monster'
+      }
+    },
+    monsterHealth(value) {
+      if (value <= 0 && this.playerHealth <= 0) {
+        //a draw
+        this.winner =  'draw'
+      } else if (value <= 0) {
+        //monster lost
+        this.winner = 'player'
+      }
     }
   }
 });
